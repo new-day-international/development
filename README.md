@@ -14,6 +14,8 @@ To get started:
 3. Check this out of github  
 
         git clone https://github.com/new-day-international/development 
+4. In a shell go to the direcrtory you just checked out
+        cd ~/development
 
 4. Create VM and install reddit code.  This step will take a few minutes
 
@@ -25,3 +27,6 @@ To get started:
         
 6. Access the reddit code running on your VM, by going to `http://reddit.local:8080/`
 7. You can edit the code in `development/reddit_home` and after a brief automatic restart the changes will be reflected at the above URL.
+
+
+To stop the VM, you can use `vagrant halt`.  To start it agian you can use `vagrant up`.  
