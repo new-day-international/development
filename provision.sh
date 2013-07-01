@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ! -f /vagrant/provisioning-complete ]; then
+if [ -f /vagrant/provisioning-complete ]; then
   echo "Provisioning already done"
   exit 0
 fi
@@ -15,5 +15,9 @@ aptitude update
 aptitude install joe
 
 /vagrant/install-reddit.sh
+
+cd /vagrant/reddit_home/reddit/r2
+paster run run.ini r2/models/populatedb.py -c 'populate()'
+start reddit-job-update_reddits
 
 touch /vagrant/provisioning-complete
