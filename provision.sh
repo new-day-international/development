@@ -24,4 +24,7 @@ cd /vagrant/reddit_home/reddit/r2
 paster run run.ini r2/models/populatedb.py -c 'populate()'
 start reddit-job-update_reddits
 
+# we don't need this directory, and it's confusing to have two copies of each file
+rm -rf /vagrant/reddit_home/reddit/r2/build
+
 touch $FLAG_FILE
