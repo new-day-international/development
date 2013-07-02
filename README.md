@@ -32,5 +32,5 @@ To get started:
 
 
 To stop the VM, you can use `vagrant halt`.  
-To start it again you can use `vagrant up`.
+To start it again you can use `vagrant up`.  
 To rebuild it from scratch use `vagrant destroy` and then `vagrant up`.
