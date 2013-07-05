@@ -21,7 +21,7 @@ echo "sleeping for 30 seconds to let the startup scripts to settle down..."
 sleep 30
 
 cd /vagrant/reddit_home/reddit/r2
-paster run run.ini r2/models/populatedb.py -c 'populate()'
+paster run run.ini r2/models/create_default_newday_spaces.py -c 'populate()'
 start reddit-job-update_reddits
 
 # we don't need this directory, and it's confusing to have two copies of each file
