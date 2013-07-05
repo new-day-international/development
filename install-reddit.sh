@@ -237,8 +237,8 @@ rabbitmqctl set_permissions -p / reddit ".*" ".*" ".*"
 # Install and configure the reddit code
 ###############################################################################
 cd $REDDIT_HOME/reddit/r2
-sudo -u $REDDIT_OWNER make pyx # generate the .c files from .pyx
 sudo -u $REDDIT_OWNER python setup.py build
+sudo -u $REDDIT_OWNER make pyx # generate the .c files from .pyx
 python setup.py develop
 
 cd $REDDIT_HOME/reddit-i18n/
