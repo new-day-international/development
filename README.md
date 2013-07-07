@@ -9,7 +9,7 @@ to edit the code on your VM host and see the changes reflected in the VM.
 
 To get started:
 
-1. Install [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2).  At the time of writing this the current verison (4.2.14) of VirtualBox had a [bug](https://www.virtualbox.org/ticket/11895).  By using the older 4.2.10 version I was able to avoid the bug.
+1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Version 4.2.16 works.
 2. Install [Vagrant](http://downloads.vagrantup.com/).  I used Vagrant 1.2.22.
 3. Check this out of github  
 
