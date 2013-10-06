@@ -2,24 +2,26 @@
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
-VAGRANTFILE_API_VERSION = "2"
+VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.omnibus.chef_version = '10.14.2'
-  config.vm.box = "precise64"
-  config.vm.network :private_network, ip: "33.33.33.10"
+  config.omnibus.chef_version = '10.26.0'
+  config.vm.hostname = 'localdev'
+  config.vm.box = 'precise64'
+  config.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box'
+  config.vm.network :private_network, ip: '172.16.42.42'
   config.berkshelf.enabled = true
 
   config.vm.provider :virtualbox do |vb|
     # Use VBoxManage to customize the VM. For example to change memory:
-    vb.customize ["modifyvm", :id, "--memory", "3072"]
+    vb.customize ['modifyvm', :id, '--memory', '3072']
   end
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       java: {
        	oracle: {
-          "accept_oracle_download_terms" => true
+          'accept_oracle_download_terms' => true
         }
       },
       lightnet: {
@@ -42,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     chef.run_list = [
-      "recipe[lightnet::development_vm]",
+      'recipe[lightnet::development_vm]',
     ]
   end
 

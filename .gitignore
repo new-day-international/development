@@ -1,3 +1,4 @@
 .vagrant
-reddit_home
-provisioning-complete
+reddit
+reddit-i18n
+consumer-count.d
