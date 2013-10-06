@@ -26,18 +26,23 @@ To get started:
 
     cd ~/development
 
-4. Create VM and install reddit code.  This step will take a few minutes
+6. Check out a copy of the reddit code with your github credentials.  This
+will allow you to commit your code after you make changes.
+
+    git clone git@github.com:new-day-international/reddit.git
+
+7. Create VM and install reddit code.  This step will take a few minutes
 
     vagrant up; vagrant provision
 
-5. Edit your host file to point to the VM.  You want a line like this:
+8. Edit your host file to point to the VM.  You want a line like this:
 
     172.16.42.42	localdev.lightnet.is
         
-6. Access the reddit code running on your VM, by going to
+9. Access the reddit code running on your VM, by going to
 `http://localdev.lightnet.is/`
 
-7. You can edit the code in `development/reddit` and after a brief automatic
+10. You can edit the code in `development/reddit` and after a brief automatic
 restart the changes will be reflected at the above URL.
 
 
@@ -48,3 +53,4 @@ To rebuild it from scratch use `vagrant destroy` and then `vagrant up`.
 If you need to change something that you want to presist after rebuilding
 from scatch you might want to look at the [Chef cookbook that builds the
 vm](https://github.com/new-day-international/chef-lightnet)
+
