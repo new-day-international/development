@@ -51,20 +51,20 @@ restart the changes will be reflected at the above URL.
 * To rebuild it from scratch use `vagrant destroy` and then `vagrant up`.
 * To run tests
 
-    vagrant ssh
-    cd /vagrant/reddit/r2
-    ./run_tests.sh
+        vagrant ssh
+        cd /vagrant/reddit/r2
+        ./run_tests.sh
 
 * To access the development database
 
-    vagrant ssh
-    sudo -u postgres psql reddit
+        vagrant ssh
+        sudo -u postgres psql reddit
 
 * To get a python shell with the development enviroment
 
-    vagrant ssh
-    cd /vagrant/reddit/r2
-    paster shell run.ini
+        vagrant ssh
+        cd /vagrant/reddit/r2
+        paster shell run.ini
 
 If you need to change something that you want to presist after rebuilding
 from scatch you might want to look at the [Chef cookbook that builds the
