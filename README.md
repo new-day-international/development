@@ -15,29 +15,29 @@ To get started:
 2. Install [Vagrant](http://downloads.vagrantup.com/).  Version 1.3.4 works.
 3. Install required vagrant plugins:
 	
-    vagrant plugin install vagrant-berkshelf
-    vagrant plugin install vagrant-omnibus
+        vagrant plugin install vagrant-berkshelf
+        vagrant plugin install vagrant-omnibus
 
 4. Check this out of github  
 
-    git clone https://github.com/new-day-international/development 
+        git clone https://github.com/new-day-international/development 
 
 5. In a shell go to the directory you just checked out
 
-    cd ~/development
+        cd ~/development
 
 6. Check out a copy of the reddit code with your github credentials.  This
 will allow you to commit your code after you make changes.
 
-    git clone git@github.com:new-day-international/reddit.git
+    	git clone git@github.com:new-day-international/reddit.git
 
 7. Create VM and install reddit code.  This step will take a few minutes
 
-    vagrant up; vagrant provision
+        vagrant up
 
 8. Edit your host file to point to the VM.  You want a line like this:
 
-    172.16.42.42	localdev.lightnet.is
+    	172.16.42.42	localdev.lightnet.is
         
 9. Access the reddit code running on your VM, by going to
 `http://localdev.lightnet.is/`
@@ -49,6 +49,22 @@ restart the changes will be reflected at the above URL.
 To stop the VM, you can use `vagrant halt`.  
 To start it again you can use `vagrant up`.  
 To rebuild it from scratch use `vagrant destroy` and then `vagrant up`.
+To run tests
+
+    vagrant ssh
+    cd /vagrant/reddit/r2
+    ./run_tests.sh
+
+To access the development database
+
+    vagrant ssh
+    sudo -u postgres psql reddit
+
+To get a python shell with the development enviroment
+
+    vagrant ssh
+    cd /vagrant/reddit/r2
+    paster shell run.ini
 
 If you need to change something that you want to presist after rebuilding
 from scatch you might want to look at the [Chef cookbook that builds the
