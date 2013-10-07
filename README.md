@@ -46,21 +46,21 @@ will allow you to commit your code after you make changes.
 restart the changes will be reflected at the above URL.
 
 
-To stop the VM, you can use `vagrant halt`.  
-To start it again you can use `vagrant up`.  
-To rebuild it from scratch use `vagrant destroy` and then `vagrant up`.
-To run tests
+* To stop the VM, you can use `vagrant halt`.  
+* To start it again you can use `vagrant up`.  
+* To rebuild it from scratch use `vagrant destroy` and then `vagrant up`.
+* To run tests
 
     vagrant ssh
     cd /vagrant/reddit/r2
     ./run_tests.sh
 
-To access the development database
+* To access the development database
 
     vagrant ssh
     sudo -u postgres psql reddit
 
-To get a python shell with the development enviroment
+* To get a python shell with the development enviroment
 
     vagrant ssh
     cd /vagrant/reddit/r2
