@@ -3,7 +3,7 @@
     "lightnet": {
       "locked_version": "0.1.0",
       "git": "https://github.com/new-day-international/chef-lightnet.git",
-      "ref": "965ebfa07e88527eee029a58d37a342c834092d1"
+      "ref": "3891f0d1794fdf4e9c825978f5ba1c19c25ab880"
     },
     "java": {
       "locked_version": "1.13.1",
@@ -20,13 +20,13 @@
       "locked_version": "1.4.2"
     },
     "openssl": {
-      "locked_version": "1.1.0"
+      "locked_version": "1.0.2"
     },
     "database": {
       "locked_version": "1.4.0"
     },
     "mysql": {
-      "locked_version": "3.0.4"
+      "locked_version": "3.0.2"
     },
     "aws": {
       "locked_version": "0.101.4"
@@ -35,16 +35,19 @@
       "locked_version": "1.1.0"
     },
     "rabbitmq": {
-      "locked_version": "2.3.0"
+      "locked_version": "2.1.2"
     },
     "erlang": {
-      "locked_version": "1.3.2"
+      "locked_version": "1.3.0"
     },
     "yum": {
-      "locked_version": "2.3.2"
+      "locked_version": "2.3.0"
     },
     "python": {
-      "locked_version": "1.4.0"
+      "locked_version": "1.3.6"
+    },
+    "sudo": {
+      "locked_version": "2.2.0"
     },
     "windows": {
       "locked_version": "1.10.0"

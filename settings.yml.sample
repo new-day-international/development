@@ -1,0 +1,20 @@
+# This is mostly for secrets that you don't want the rest of the world to know.  If it's some
+# sane defaults you should put them in the chef cookbooks attributes, or in Vagrantfile's defaults
+# hash
+lightnet:
+  cloudsearch:
+    link_search: ~
+    link_doc: ~
+    subreddit_search: ~
+    subreddit_doc: ~
+  s3:
+    key_id: ~
+    secret_key: ~
+    user_files_bucket: ~
+    user_files_host: ~
+    media_buckets: ~
+  admins: []
+  google_analytics: ~
+  secret: ~
+  feed_secret: ~
+  admin_secret: ~

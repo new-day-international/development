@@ -1,8 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+require 'yaml'
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = '2'
+
+Vagrant.require_plugin 'vagrant-berkshelf'
+Vagrant.require_plugin 'vagrant-omnibus'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = '10.26.0'
@@ -18,14 +22,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision :chef_solo do |chef|
-    chef.json = {
+    defaults = {
       java: {
        	oracle: {
           'accept_oracle_download_terms' => true
         }
       },
       lightnet: {
-        domain_name: 'localdev.lightnet.is'
+        domain_name: 'localdev.lightnet.is',
+        create_user: false,
+        application_directory: '/vagrant',
+        user: 'vagrant',
+        group: 'vagrant',
       },
       postgresql: {
         password: {
@@ -33,15 +41,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         }
       },
     }
-
-    unless ENV['LIGHTNET_PRODUCTION']
-      chef.json[:lightnet].merge!({
-        create_user: false,
-        application_directory: '/vagrant',
-        user: 'vagrant',
-        group: 'vagrant',
-      })
-    end
+    settings = YAML.load_file('settings.yml').deep_symbolize_keys!
+    chef.json = defaults.deep_merge!(settings)
 
     chef.run_list = [
       'recipe[lightnet::development_vm]',
