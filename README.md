@@ -41,6 +41,12 @@ will allow you to commit your code after you make changes.
 
     	git clone git@github.com:new-day-international/reddit.git
 
+If you are rerunning `vagrant provision` laster, you need to make sure your
+checkout is up to date or it will fail with this error:
+        
+        STDERR: Host key verification failed.
+        fatal: The remote end hung up unexpectedly
+
 1. Create VM and install reddit code.  This step will take a few minutes
 
         vagrant up

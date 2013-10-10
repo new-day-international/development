@@ -3,7 +3,7 @@
     "lightnet": {
       "locked_version": "0.1.0",
       "git": "https://github.com/new-day-international/chef-lightnet.git",
-      "ref": "3891f0d1794fdf4e9c825978f5ba1c19c25ab880"
+      "ref": "3d3889b254a05826a1e9b4c4d8b9f7b1f1122da8"
     },
     "java": {
       "locked_version": "1.13.1",

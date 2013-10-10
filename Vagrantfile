@@ -41,7 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         }
       },
     }
-    settings = YAML.load_file('settings.yml').deep_symbolize_keys!
+    settings = YAML.load_file(File.expand_path('../settings.yml', __FILE__)).deep_symbolize_keys!
     chef.json = defaults.deep_merge!(settings)
 
     chef.run_list = [
