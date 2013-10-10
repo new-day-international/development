@@ -51,6 +51,9 @@ checkout is up to date or it will fail with this error:
 
         vagrant up
 
+This will create (if needed) a VirtualBox VM, then start it, then run `vagrant
+provision`.  
+
 1. Edit your host file to point to the VM.  You want a line like this:
 
     	172.16.42.42	localdev.lightnet.is
@@ -84,4 +87,12 @@ restart the changes will be reflected at the above URL.
 If you need to change something that you want to presist after rebuilding
 from scatch you might want to look at the [Chef cookbook that builds the
 vm](https://github.com/new-day-international/chef-lightnet)
+
+## Troubleshooting
+
+* When running the `vagrant up` or `vagrant provision` we've seen the error
+"error: could not create 'r2.egg-info': File exists".  We think this is a
+problem with VirtualBox's shared folder system.  To fix this we did `vagrant
+reload` which stops virtualbox then starts it again, then ran `vagrant
+provision`.
 
