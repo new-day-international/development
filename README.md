@@ -84,6 +84,10 @@ restart the changes will be reflected at the above URL.
         cd /vagrant/reddit/r2
         paster shell run.ini
 
+* To list all pending messages in rabbitmq
+
+        sudo rabbitmqctl list_queues -p /reddit
+
 If you need to change something that you want to presist after rebuilding
 from scatch you might want to look at the [Chef cookbook that builds the
 vm](https://github.com/new-day-international/chef-lightnet)
