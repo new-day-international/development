@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         }
       },
       lightnet: {
-        domain_name: 'localdev.lightnet.is',
+        domain_name: 'localdev.lightnetb.org',
         create_user: false,
         application_directory: '/vagrant',
         user: 'vagrant',

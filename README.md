@@ -56,7 +56,7 @@ provision`.
 
 1. Edit your host file to point to the VM.  You want a line like this:
 
-    	172.16.42.42	localdev.lightnet.is
+    	172.16.42.42	localdev.lightnetb.org
         
 1. Access the reddit code running on your VM, by going to
 `http://localdev.lightnet.is/`
