@@ -13,6 +13,11 @@ To get started:
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Version 4.2.18 works.
 1. Install [Vagrant](http://downloads.vagrantup.com/).  Version 1.3.4 works.
+1. If you already had Vagrant installed, be sure you don't already have a
+Vagrant base box called "precise64".
+
+        vagrant box remove precise64 virtualbox
+
 1. Install required vagrant plugins:
 	
         vagrant plugin install vagrant-berkshelf
