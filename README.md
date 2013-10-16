@@ -1,13 +1,10 @@
-development
-===========
+# lightnet Development
 
 Files, tools and utilities for New Day developers.
 
-This uses Vagrant to setup a Ubuntu Linux 12.04 VM in VirtualBox using Chef that
-will run the reddit code and all of its dependencies.  You will then be able
-to edit the code on your VM host and see the changes reflected in the VM.
+This uses Vagrant and Chef to setup a Ubuntu Linux 12.04 in a VirtualBox guest that will run the lightnet code and all of its dependencies.  You will then be able to edit the code on your host and see the changes reflected in the guest.
 
-This assumes you are running on Mac OS X 10.8.
+This assumes you are running on Mac OS X 10.8, and have 8GB of RAM.
 
 To get started:
 
@@ -46,8 +43,7 @@ will allow you to commit your code after you make changes.
 
     	git clone git@github.com:new-day-international/reddit.git
 
-If you are rerunning `vagrant provision` laster, you need to make sure your
-checkout is up to date or it will fail with this error:
+    If you are rerunning `vagrant provision` laster, you need to make sure your checkout is up to date or it will fail with this error:
         
         STDERR: Host key verification failed.
         fatal: The remote end hung up unexpectedly
@@ -56,42 +52,62 @@ checkout is up to date or it will fail with this error:
 
         vagrant up
 
-This will create (if needed) a VirtualBox VM, then start it, then run `vagrant
-provision`.  
+    This will create (if needed) a VirtualBox VM, then start it, then run `vagrant provision`.  
 
 1. Edit your host file to point to the VM.  You want a line like this:
 
     	172.16.42.42	localdev.lightnetb.org
         
 1. Access the reddit code running on your VM, by going to
-`http://localdev.lightnet.is/`
+[http://localdev.lightnetb.org/](http://localdev.lightnetb.org/)
 
 1. You can edit the code in `development/reddit` and after a brief automatic
 restart the changes will be reflected at the above URL.
 
-* To stop the VM, you can use `vagrant halt`.  
-* To start it again you can use `vagrant up`.  
-* To rebuild it from scratch use `vagrant destroy` and then `vagrant up`.
-* To run tests
+## Frequently Used Commands 
 
-        vagrant ssh
-        cd /vagrant/reddit/r2
-        ./run_tests.sh
+#### Stop the VM
+    
+    vagrant halt
+    
+#### Start it
+    
+    vagrant up
+    
+#### Rebuild it from scratch 
+    
+    vagrant destroy
+    vagrant up
 
-* To access the development database
+#### Rerun chef scripts 
 
-        vagrant ssh
-        sudo -u postgres psql reddit
+Might be useful to do if `vagrant up` was interupted and failed.
 
-* To get a python shell with the development enviroment
+    vagrant provision
 
-        vagrant ssh
-        cd /vagrant/reddit/r2
-        paster shell run.ini
+#### Run tests
 
-* To list all pending messages in rabbitmq
+	vagrant ssh
+	cd /vagrant/reddit/r2
+	./run_tests.sh
 
-        sudo rabbitmqctl list_queues -p /reddit
+#### Access the development database
+
+	vagrant ssh
+	sudo -u postgres psql reddit
+
+#### Run a python shell with the development enviroment
+
+	vagrant ssh
+	cd /vagrant/reddit/r2
+	paster shell run.ini
+
+#### List all pending messages in rabbitmq
+
+	vagrant ssh
+    sudo rabbitmqctl list_queues -p /reddit
+
+## Persiting changes between vm rebuilds
 
 If you need to change something that you want to presist after rebuilding
 from scatch you might want to look at the [Chef cookbook that builds the
