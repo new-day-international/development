@@ -1,6 +1,16 @@
 # This is mostly for secrets that you don't want the rest of the world to know.  If it's some
 # sane defaults you should put them in the chef cookbooks attributes, or in Vagrantfile's defaults
 # hash
+
+aws: 
+  access_key_id: ~
+  secret_access_key: ~
+  keypair_name: ~
+  private_key_path: ~
+  default_username: ubuntu
+  ami: ami-ad3660c4
+  instance_type: m1.medium
+  security_groups: ['application']
 lightnet:
   cloudsearch:
     link_search: ~

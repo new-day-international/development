@@ -121,3 +121,10 @@ problem with VirtualBox's shared folder system.  To fix this we did `vagrant
 reload` which stops virtualbox then starts it again, then ran `vagrant
 provision`.
 
+## Booting a Development VM on AWS
+
+If you edit your settings.yml file and add your keys for AWS you can spin up a 
+EC2 instance.
+   
+    vagrant up --provider aws
+
