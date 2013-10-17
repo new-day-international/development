@@ -41,7 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   settings = deep_merge(defaults, settings)
 
-  config.omnibus.chef_version = '10.26.0'
+  config.omnibus.chef_version = '10.28.2'
   config.vm.hostname = 'localdev'
   config.vm.box = 'precise64'
   config.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box'
