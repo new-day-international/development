@@ -125,6 +125,13 @@ provision`.
 
 If you edit your settings.yml file and add your keys for AWS you can spin up a 
 EC2 instance.
+
+First you'll need to add a dummy base box, since AWS AMI's take the place of 
+VirtualBox's base boxes.
+
+    vagrant box add precise64 https://github.com/mitchellh/vagrant-aws/blob/master/dummy.box?raw=true --provider aws
+
+Now we can start up a VM.
    
     vagrant up --provider aws
 

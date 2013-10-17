@@ -28,6 +28,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         'postgres' => 'password',
       }
     },
+    'aws' => {
+      'tags' => {
+        'Name' => 'localdev',
+      },
+    },
   }
   settings = YAML.load_file(File.expand_path('../settings.yml', __FILE__))
   # we can't use deep merge from active support for some reason.  Causes 'vagrant plugin list' to error.
