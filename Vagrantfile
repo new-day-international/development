@@ -31,6 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   }
   settings = YAML.load_file(File.expand_path('../settings.yml', __FILE__))
   # we can't use deep merge from active support for some reason.  Causes 'vagrant plugin list' to error.
+  # https://github.com/mitchellh/vagrant/issues/2388
   def deep_merge(src, dst)
     src.each_pair do |k,v|
       tv = dst[k]
