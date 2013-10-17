@@ -9,27 +9,36 @@ Vagrant.require_plugin 'vagrant-berkshelf'
 Vagrant.require_plugin 'vagrant-omnibus'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
   defaults = {
-    java: {
-      oracle: {
+    'java' => {
+      'oracle' => {
         'accept_oracle_download_terms' => true
       }
     },
-    lightnet: {
-      domain_name: 'localdev.lightnetb.org',
-      create_user: false,
-      application_directory: '/vagrant',
-      user: 'vagrant',
-      group: 'vagrant',
+    'lightnet' => {
+      'domain_name' => 'localdev.lightnetb.org',
+      'create_user' => false,
+      'application_directory' => '/vagrant',
+      'user' => 'vagrant',
+      'group' => 'vagrant',
     },
-    postgresql: {
-      password: {
-        postgres: 'password',
+    'postgresql' => {
+      'password' => {
+        'postgres' => 'password',
       }
     },
   }
-  settings = YAML.load_file(File.expand_path('../settings.yml', __FILE__)).deep_symbolize_keys!
-  settings = defaults.deep_merge!(settings)
+  settings = YAML.load_file(File.expand_path('../settings.yml', __FILE__))
+  # we can't use deep merge from active support for some reason.  Causes 'vagrant plugin list' to error.
+  def deep_merge(src, dst)
+    src.each_pair do |k,v|
+      tv = dst[k]
+      dst[k] = tv.is_a?(Hash) && v.is_a?(Hash) ? deep_merge(tv, v) : v
+    end
+    dst
+  end
+  settings = deep_merge(defaults, settings)
 
   config.omnibus.chef_version = '10.26.0'
   config.vm.hostname = 'localdev'
@@ -43,17 +52,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ['modifyvm', :id, '--memory', '3072']
   end
 
-  if settings.key?(:aws)
+  if settings.key?('aws')
     config.vm.provider :aws do |aws, override|
-      settings[:aws].each_key do |key|
-        next if [:default_username, :private_key_path].include?(key)
-        aws.send(:"#{key.to_s}=", settings[:aws][key])
+      settings['aws'].each_key do |key|
+        next if ['default_username', 'private_key_path'].include?(key)
+        aws.send(:"#{key}=", settings['aws'][key])
       end
-      override.ssh.username = settings[:aws][:default_username]
-      override.ssh.private_key_path = settings[:aws][:private_key_path]
+      override.ssh.username = settings['aws']['default_username']
+      override.ssh.private_key_path = settings['aws']['private_key_path']
     end
-    defaults[:lightnet][:user] = settings[:aws][:default_username]
-    defaults[:lightnet][:group] = settings[:aws][:default_username]
+    defaults['lightnet']['user'] = settings['aws']['default_username']
+    defaults['lightnet']['group'] = settings['aws']['default_username']
   end
 
   config.vm.provision :chef_solo do |chef|
