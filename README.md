@@ -11,7 +11,7 @@ To get started:
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Version 4.2.18 works.
 1. Install [Vagrant](http://downloads.vagrantup.com/).  Version 1.3.4 works.
 1. If you already had Vagrant installed, be sure you don't already have a
-Vagrant base box called "precise64".
+Vagrant base box called "precise64".  You only need to do this the first time you follow these directions.
 
         vagrant box remove precise64 virtualbox
 
@@ -43,7 +43,7 @@ will allow you to commit your code after you make changes.
 
     	git clone git@github.com:new-day-international/reddit.git
 
-    If you are rerunning `vagrant provision` laster, you need to make sure your checkout is up to date or it will fail with this error:
+    If you are rerunning `vagrant provision` later, you need to make sure your `reddit` checkout is up to date or it will fail with this error:
         
         STDERR: Host key verification failed.
         fatal: The remote end hung up unexpectedly
