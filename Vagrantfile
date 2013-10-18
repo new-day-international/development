@@ -67,8 +67,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       override.ssh.username = settings['aws']['default_username']
       override.ssh.private_key_path = settings['aws']['private_key_path']
     end
-    defaults['lightnet']['user'] = settings['aws']['default_username']
-    defaults['lightnet']['group'] = settings['aws']['default_username']
+    #defaults['lightnet']['user'] = settings['aws']['default_username']
+    #defaults['lightnet']['group'] = settings['aws']['default_username']
   end
 
   config.vm.provision :chef_solo do |chef|
