@@ -107,7 +107,7 @@ Might be useful to do if `vagrant up` was interupted and failed.
 	vagrant ssh
     sudo rabbitmqctl list_queues -p /reddit
 
-## Persiting changes between vm rebuilds
+## Persisting changes between vm rebuilds
 
 If you need to change something that you want to presist after rebuilding
 from scatch you might want to look at the [Chef cookbook that builds the
