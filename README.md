@@ -4,12 +4,12 @@ Files, tools and utilities for New Day developers.
 
 This uses Vagrant and Chef to setup a Ubuntu Linux 12.04 in a VirtualBox guest that will run the lightnet code and all of its dependencies.  You will then be able to edit the code on your host and see the changes reflected in the guest.
 
-This assumes you are running on Mac OS X 10.8, and have 8GB of RAM.
+This assumes you are running on Mac OS X 10.9, and have 8GB of RAM.
 
 To get started:
 
-1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Version 4.2.18 works.
-1. Install [Vagrant](http://downloads.vagrantup.com/).  Version 1.3.4 works.
+1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Version 4.3.6 works.
+1. Install [Vagrant](http://downloads.vagrantup.com/).  Version 1.4.1 works.
 1. If you already had Vagrant installed, be sure you don't already have a
 Vagrant base box called "precise64".  You only need to do this the first time you follow these directions.
 
@@ -19,10 +19,6 @@ Vagrant base box called "precise64".  You only need to do this the first time yo
 	
         vagrant plugin install vagrant-berkshelf
         vagrant plugin install vagrant-omnibus
-
-1. Check this out of github  
-
-        git clone git@github.com:new-day-international/development 
 
 1. If you are a lightnet developer and have access to our AWS account you'll want to checkout some
 settings files that will make it easier to get up and running
@@ -38,16 +34,6 @@ If not you will need to copy `settings.yml.sample` to `settings.yml`.
 
         ln -s ../lightnet-operations/development-settings.yml settings.yml
      
-1. Check out a copy of the reddit code with your github credentials.  This
-will allow you to commit your code after you make changes.
-
-    	git clone git@github.com:new-day-international/reddit.git
-
-    If you are rerunning `vagrant provision` later, you need to make sure your `reddit` checkout is up to date or it will fail with this error:
-        
-        STDERR: Host key verification failed.
-        fatal: The remote end hung up unexpectedly
-
 1. Create VM and install reddit code.  This step will take a few minutes
 
         vagrant up
@@ -87,24 +73,24 @@ Might be useful to do if `vagrant up` was interupted and failed.
 
 #### Run tests
 
-	vagrant ssh
-	cd /vagrant/reddit/r2
-	./run_tests.sh
+    vagrant ssh
+    cd /vagrant/reddit/r2
+    ./run_tests.sh
 
 #### Access the development database
 
-	vagrant ssh
-	sudo -u postgres psql reddit
+    vagrant ssh
+    sudo -u postgres psql reddit
 
 #### Run a python shell with the development enviroment
 
-	vagrant ssh
-	cd /vagrant/reddit/r2
-	paster shell run.ini
+    vagrant ssh
+    cd /vagrant/reddit/r2
+    paster shell run.ini
 
 #### List all pending messages in rabbitmq
 
-	vagrant ssh
+    vagrant ssh
     sudo rabbitmqctl list_queues -p /reddit
 
 ## Persisting changes between vm rebuilds
