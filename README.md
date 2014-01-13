@@ -26,8 +26,8 @@ settings files that will make it easier to get up and running
         git clone git@github.com:new-day-international/lightnet-operations
 
 1. In a shell clone this repo
-	
-	git clone git@github.com:new-day-international/development
+
+        git clone git@github.com:new-day-international/development
         cd ~/development
 
 1. If you checked out lightnet-operations in the step above do the following commands.
