@@ -75,7 +75,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.json = settings
 
     chef.run_list = [
-      'recipe[lightnet::development_vm]',
+      'recipe[lightnet::all_in_one_server]',
     ]
   end
 end
