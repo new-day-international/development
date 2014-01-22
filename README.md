@@ -17,8 +17,14 @@ Vagrant base box called "precise64".  You only need to do this the first time yo
 
 1. Install required vagrant plugins:
 	
-        vagrant plugin install vagrant-berkshelf
         vagrant plugin install vagrant-omnibus
+
+1. Install vagrant-berkself from source (when version 1.4.0 is release this step can go back to installing with `vagrant plugin install`)
+
+        git clone https://github.com/berkshelf/vagrant-berkshelf.git
+	bundle
+	bundle exec thor gem:build
+	vagrant plugin install --plugin-prerelease --plugin-source https://rubygems.org pkg/vagrant-berkshelf-1.4.0.*.gem
 
 1. If you are a lightnet developer and have access to our AWS account you'll want to checkout some
 settings files that will make it easier to get up and running
